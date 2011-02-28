@@ -24,30 +24,30 @@ def __logical_operations(function, *expression_list):
       raise TypeError, "Arguments must be LogicalExpressions"
 
 #Public API
-def of_and(*expression_list):
+def AND(*expression_list):
     """Return the syntax for an "and"  """
     return __logical_operations("AND", *expression_list)
 
-def of_or(*expression_list):
+def OR(*expression_list):
     """Return the syntax for an "or" """
     return __logical_operations("OR", *expression_list)
 
-def of_true():
+def TRUE():
     """Return the value true included in the open formula syntax """
     return LogicalExpression("TRUE()")
 
-def of_false():
+def FALSE():
     """Return the value false included in the open formula syntax """
     return LogicalExpression("FALSE()")
 
-def of_not(expression):
+def NOT(expression):
     """Return the syntax for a "not" expression  """
     if type(expression) is LogicalExpression:
         return LogicalExpression("NOT("+expression.str+")")
     else:
         raise TypeError, "Argument must be a LogicalExpression"
 
-def of_if(test, then, otherwise):
+def IF(test, then, otherwise):
     """
     Return the syntax for an if
 
