@@ -4,8 +4,8 @@ Operations like AND, OR, IF etc...
 """
 
 #Import from Open Formula
-from of_utils import is_logical_list
-from of_class import LogicalExpression, Number, CellReference
+from utils import is_logical_list
+from objects import LogicalExpression, Number, CellReference
 
 
 #Private API

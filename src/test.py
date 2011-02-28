@@ -2,19 +2,18 @@
 from unittest import TestLoader, TestSuite, TextTestRunner
 
 # Import tests
-import test_of_basics_op
-import test_of_logical
-import test_of_maths
-import test_of_stats
-import test_of_syntax
+import test_basics
+import test_logic
+import test_maths
+import test_stats
+import test_syntax
 
 
-test_modules = [test_of_basics_op,
-		test_of_logical,
-		test_of_maths,
-		test_of_stats,
-		test_of_syntax]
-
+test_modules = [test_basics,
+                test_logic,
+                test_maths,
+                test_stats,
+                test_syntax]
 
 loader = TestLoader()
 

@@ -3,9 +3,9 @@ from lpod.table import odf_create_table, odf_create_cell
 
 from random import randrange
 
-#import lpod_vle
-from lpod_vle.of_syntax import of_formula, of_intro, of_reference, of_range_address, of_column, of_row
-from lpod_vle.of_stats import of_average, of_min, of_max
+#import openformula
+from syntax import of_formula, of_intro, of_reference, of_range_address, of_column, of_row
+from stats import of_average, of_min, of_max
 
 #We create a spreadsheet just for the example
 doc = odf_new_document('spreadsheet')

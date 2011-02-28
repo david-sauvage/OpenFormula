@@ -1,7 +1,7 @@
 """Module with some useful functions used by Open Formula"""
 
 #Import from Open Formula
-from of_class import Number, CellReference, RangeReference, LogicalExpression
+from objects import Number, CellReference, RangeReference, LogicalExpression
 
 #Functions that verify types
 def is_number_list(arg):

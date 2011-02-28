@@ -1,7 +1,7 @@
 import unittest
 
-from of_class import LogicalExpression, Number
-from of_logicals_op import of_and, of_or, of_true, of_false, of_not, of_if
+from objects import LogicalExpression, Number
+from logic import of_and, of_or, of_true, of_false, of_not, of_if
 
 class TestOpenFormulaFunctions(unittest.TestCase):
     

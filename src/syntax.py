@@ -7,8 +7,8 @@ from re import compile, match
 from decimal import Decimal
 
 #Import from
-from of_class import Number, Cell, Range, CellReference, RangeReference
-from of_class import Column, Row
+from objects import Number, Cell, Range, CellReference, RangeReference
+from objects import Column, Row
 
 function_name_pattern = compile("^[A-Za-z_.1-9]*$")
 

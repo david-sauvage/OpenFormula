@@ -1,17 +1,17 @@
 import unittest
 
-from of_class import Number, CellReference, RangeReference
-from of_maths import of_abs, of_acos, of_acosh, of_acot, of_acoth, of_asin
-from of_maths import of_asinh, of_atan, of_atan2, of_atanh, of_ceiling
-from of_maths import of_combin, of_combina, of_cos, of_cosh, of_cot, of_coth
-from of_maths import of_countblank, of_countif, of_degrees, of_even, of_exp
-from of_maths import of_fact, of_floor, of_gcd, of_gcd_add, of_int, of_iseven
-from of_maths import of_isodd, of_lcm, of_lcm_add, of_ln, of_log, of_log10, of_mod
-from of_maths import of_mround, of_multinomial, of_odd, of_pi, of_power, of_product
-from of_maths import of_quotient, of_radians, of_rand, of_randbetween, of_round
-from of_maths import of_rounddown, of_roundup, of_seriessum, of_sign, of_sin, of_sinh
-from of_maths import of_sqrt, of_sqrtpi, of_sum, of_sumif, of_sumsq, of_tan
-from of_maths import of_tanh, of_trunc
+from objects import Number, CellReference, RangeReference
+from maths import of_abs, of_acos, of_acosh, of_acot, of_acoth, of_asin
+from maths import of_asinh, of_atan, of_atan2, of_atanh, of_ceiling
+from maths import of_combin, of_combina, of_cos, of_cosh, of_cot, of_coth
+from maths import of_countblank, of_countif, of_degrees, of_even, of_exp
+from maths import of_fact, of_floor, of_gcd, of_gcd_add, of_int, of_iseven
+from maths import of_isodd, of_lcm, of_lcm_add, of_ln, of_log, of_log10, of_mod
+from maths import of_mround, of_multinomial, of_odd, of_pi, of_power, of_product
+from maths import of_quotient, of_radians, of_rand, of_randbetween, of_round
+from maths import of_rounddown, of_roundup, of_seriessum, of_sign, of_sin, of_sinh
+from maths import of_sqrt, of_sqrtpi, of_sum, of_sumif, of_sumsq, of_tan
+from maths import of_tanh, of_trunc
 
 
 class TestOpenFormulaMaths(unittest.TestCase):

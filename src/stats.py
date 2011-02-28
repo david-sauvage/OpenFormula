@@ -1,7 +1,7 @@
 """Module that gives statistics functions for open formula """
 
 #Import from Open Formula
-from of_maths import __num_list_function
+from maths import __num_list_function
 
 
 def of_max(*number_list):

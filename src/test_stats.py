@@ -1,7 +1,7 @@
 import unittest
 
-from of_class import RangeReference
-from of_stats import of_max, of_min, of_average, of_sumproduct
+from objects import RangeReference
+from stats import of_max, of_min, of_average, of_sumproduct
 
 
 class TestOpenFormulaFunctions(unittest.TestCase):

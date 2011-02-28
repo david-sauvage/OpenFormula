@@ -3,8 +3,8 @@ Modules that will give basics operations for open formula
 (Operations like add substract or comparison like equal, upper etc...)
 """
 #Import from Open Formula
-from of_class import LogicalExpression
-from of_utils import is_number_list, is_str_num_list, is_string_list
+from objects import LogicalExpression
+from utils import is_number_list, is_str_num_list, is_string_list
 
 
 #Private API
