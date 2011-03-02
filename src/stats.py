@@ -4,18 +4,18 @@
 from maths import __num_list_function
 
 
-def of_max(*number_list):
+def MAX(*number_list):
     """Return the syntax for a maximum """
     return __num_list_function("MAX", *number_list)
 
-def of_min(*number_list):
+def MIN(*number_list):
     """Return the syntax for a minimum """
     return __num_list_function("MIN", *number_list)
 
-def of_average(*number_list):
+def AVERAGE(*number_list):
     """Return the syntax for an average """
     return __num_list_function("AVERAGE", *number_list)
 
-def of_sumproduct(*number_list):
+def SUMPRODUCT(*number_list):
     """Return the syntax for a sumproduct """
     return __num_list_function("SUMPRODUCT", *number_list)
