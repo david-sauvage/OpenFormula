@@ -119,91 +119,91 @@ def __floor_ceil(function, number, significance, mode):
 #Public API
 #
 
-def of_abs(number):
+def ABS(number):
     """Return the syntax for an absolute value """
     return __simple_function("ABS", number)
 
-def of_acos(number):
+def ACOS(number):
     """Return the syntax for arccosine """
     return __simple_function("ACOS", number)
 
-def of_acosh(number):
+def ACOSH(number):
     """Return the syntax for an inverse hyperbolic cosine """
     return __simple_function("ACOSH", number)
 
-def of_acot(number):
+def ACOT(number):
     """Return the syntax for an inverse cotangent """
     return __simple_function("ACOT", number)
 
-def of_acoth(number):
+def ACOTH(number):
     """Return the syntax for an inverse hyperbolic cotangent """
     return __simple_function("ACOTH", number)
 
-def of_asin(number):
+def ASIN(number):
     """Return the syntax for an arcsine """
     return __simple_function("ASIN", number)
 
-def of_asinh(number):
+def ASINH(number):
     """Return the syntax for an inverse hyperbolic sine """
     return __simple_function("ASINH", number)
 
-def of_atan(number):
+def ATAN(number):
     """Return the syntax for a tangent """
     return __simple_function("ATAN", number)
 
-def of_atan2(number1, number2):
+def ATAN2(number1, number2):
     """Return the syntax for a tangent with specified coordonates """
     return __simple_function2("ATAN2", number1, number2)
 
-def of_atanh(number):
+def ATANH(number):
     """Return the syntax for an inverse hyperbolic tangent """
     return __simple_function("ATANH", number)
 
-def of_ceiling(number, significance, mode=None):
+def CEILING(number, significance, mode=None):
     """
     Return the syntax for a ceiling
     Rounds a number to the nearest multiple of significance
     """
     return __floor_ceil("CEILING", number, significance, mode)
     
-def of_combin(number1, number2):
+def COMBIN(number1, number2):
     """
     Return the syntax for a combination (without repetitions)
     Calculates the number of combinations for elements without repetition
     """
     return __simple_function2("COMBIN", number1, number2)
 
-def of_combina(number1, number2):
+def COMBINA(number1, number2):
     """
     Return the syntax for a combination (with repetitions)
     Calculates the number of combinations for elements including repetition
     """ 
     return __simple_function2("COMBINA", number1, number2)
    
-def of_cos(number):
+def COS(number):
     """Return the syntax for a cosine """
     return __simple_function("COS", number)
 
-def of_cosh(number):
+def COSH(number):
     """Return the syntax for an hyperbolic cosine """
     return __simple_function("COSH", number)
 
-def of_cot(number):
+def COT(number):
     """Return the syntax for a cotagent """
     return __simple_function("COT", number)
 
-def of_coth(number):
+def COTH(number):
     """Return the syntax for an hyperbolic cotangent """
     return __simple_function("COTH", number)
 
-def of_countblank(cell_range):
+def COUNTBLANK(cell_range):
     """Return the syntax for a countblank """
     if type(cell_range) in (CellReference, RangeReference):
             return "COUNTBLANK("+cell_range.str+")"
     else:
         raise TypeError, "Argument must be a RangeReference or a CellReference"
 
-def of_countif(cells, criteria):
+def COUNTIF(cells, criteria):
    """Return the syntax for a countif """
    if (type(cells) in (CellReference, RangeReference) and type(criteria) in 
                (Number, CellReference, RangeReference, LogicalExpression, str)):
@@ -214,14 +214,14 @@ def of_countif(cells, criteria):
 			RangeReference, second argument must be Number,  
                         CellReference, RangeReference"""
 
-def of_degrees(number):
+def DEGREES(number):
     """
     Return the syntax for a degrees
     Convert Radians to Degrees
     """
     return __simple_function("DEGREES", number)
 
-def of_even(number):
+def EVEN(number):
     """
     Return the syntax for an even
     Rounds a positive number up and a negative number down
@@ -229,101 +229,101 @@ def of_even(number):
     """
     return __simple_function("EVEN", number)
 
-def of_exp(number):
+def EXP(number):
     """
     Return the syntax for an exponential
     Calculates the exponent for basis e
     """
     return __simple_function("EXP", number)
 
-def of_fact(number):
+def FACT(number):
     """Return the syntax for an factorial """
     return __simple_function("FACT", number)
 
-def of_floor(number, significance, mode=None):
+def FLOOR(number, significance, mode=None):
     """
     Return the syntax for a floor
     Round number down to the nearest multiple of significance
     """
     return  __floor_ceil("FLOOR", number, significance, mode)
 
-def of_gcd(*number_list):
+def GCD(*number_list):
     """Return the syntax for a Greatest Common Divisor """
     return __num_list_function("GCD", *number_list)
  
 
-def of_gcd_add(*number_list):
+def GCD_ADD(*number_list):
     """Return the syntax for a Greatest Common Divisor """
     return __num_list_function("GCD_ADD", *number_list)
 
-def of_int(number):
+def INT(number):
     """
     Return the syntax for an integer function
     Round a number to the nearest integer
     """
     return __simple_function("INT", number)
  
-def of_iseven(number):
+def ISEVEN(number):
     """
     Return the syntax for an "iseven"
     Return true if the value is an even integer
     """
     return __simple_function("ISEVEN", number)
 
-def of_isodd(number):
+def ISODD(number):
     """Return the syntax for an "isodd"
     Return true if the value is an odd integer
     """
     return __simple_function("ISODD", number)
 
-def of_lcm(*number_list):
+def LCM(*number_list):
     """Return the syntax for a lowest common multiple """
     return __num_list_function("LCM", *number_list)
 
-def of_lcm_add(*number_list):
+def LCM_ADD(*number_list):
     """Return the syntax for a lowest common multiple """
     return __num_list_function("LCM_ADD", *number_list)
 
-def of_ln(number):
+def LN(number):
     """
     Return the syntax for a "ln"
     Calculates the natural logarithm
     """
     return __simple_function("LN", number)
 
-def of_log(number, base):
+def LOG(number, base):
     """
     Return the syntax for a "log" with the base you want
     Calculates the logarithm to any specified base
     """
     return __simple_function2("LOG", number, base)
 
-def of_log10(number):
+def LOG10(number):
     """
     Return the syntax for a "log" in base 10
     Calculates the base 10 logarithm of a number
     """
     return __simple_function("LOG10", number)
 
-def of_mod(dividend, divisor):
+def MOD(dividend, divisor):
     """Return the syntax for a "modulo" """
     return __simple_function2("MOD", dividend, divisor)
 
-def of_mround(number, multiple):
+def MROUND(number, multiple):
     """
     Return the syntax for a "mround"
     returns the number rounded to a specified multiple
     """
     return __simple_function2("MROUND", number, multiple)
 
-def of_multinomial(*number_list):
+def MULTINOMIAL(*number_list):
     """
     Return the syntax for a "multinomial"
     Return the multinomial coefficient of a set of number
     """
     return __num_list_function("MULTINOMIAL", *number_list)
 
-def of_odd(number):
+def ODD(number):
     """
     Return the syntax for an "odd" 
     Rounds a positive number up and a negative number down
@@ -331,62 +331,62 @@ def of_odd(number):
     """
     return __simple_function("ODD", number)
 
-def of_pi():
+def PI():
     """Return the syntax in order to get Pi """
     return "PI()"
 
-def of_power(base, exponent):
+def POWER(base, exponent):
     """Return the syntax for a power (base^exponent)"""
     return __simple_function2("POWER", base, exponent)
 
-def of_product(*number_list):
+def PRODUCT(*number_list):
     """Return the syntax for a product """
     return __num_list_function("PRODUCT", *number_list)
   
-def of_quotient(numerator, denominator):
+def QUOTIENT(numerator, denominator):
     """Return the syntax for a quotient """
     return __simple_function2("QUOTIENT", numerator, denominator)
 
-def of_radians(number):
+def RADIANS(number):
     """
     Return the syntax for a "radians"
     Convert degrees to radians
     """
     return __simple_function("RADIANS", number)
 
-def of_rand():
+def RAND():
     """Return the syntax in order to get a random number """
     return "RAND()"
 
-def of_randbetween(bottom, top):
+def RANDBETWEEN(bottom, top):
     """
     Return the syntax for a randbetween
     in order to get a random number between bottom and top
     """
     return __simple_function2("RANDBETWEEN", bottom, top)
 
-def of_round(number, count=None):
+def ROUND(number, count=None):
     """
     Return the syntax for a round
     Rounds a number to a predefined accuracy
     """
     return __round("ROUND", number, count)
   
-def of_rounddown(number, count=None):
+def ROUNDDOWN(number, count=None):
     """
     Return the syntax for a rounddown
     Rounds down a number to a predefined accuracy
     """
     return __round("ROUNDDOWN", number, count)
 
-def of_roundup(number, count=None):
+def ROUNDUP(number, count=None):
     """
     Return the syntax for a roundup
     Rounds up a number to a predefined accuracy
     """
     return __round("ROUNDUP", number, count)
 
-def of_seriessum(x, n, m, coeff):
+def SERIESSUM(x, n, m, coeff):
     """
     Return the syntax for a seriessum
     Gives the sum of a power series
@@ -395,41 +395,38 @@ def of_seriessum(x, n, m, coeff):
        type(n) in (Number, CellReference) and 
        type(m) in (Number, CellReference) and 
        type(coeff) in (Number, CellReference, RangeReference)):
+	parameters = of_parameter_list(x.str, n.str, m.str, coeff.str)
+	return "SERIESSUM(" + parameters + ")"
+    raise TypeError, "Wrong type of arguments"
 
-	return "SERIESSUM("+of_parameter_list(x.str, n.str, m.str,
-                                                                 coeff.str)+")"
-
-    else:
-        raise TypeError, "Wrong type of arguments"
-
-def of_sign(number):
+def SIGN(number):
     """
     Return the syntax for a "sign" 
     Give the algebraic sign of the number
     """
     return __simple_function("SIGN", number)
   
-def of_sin(number):
+def SIN(number):
     """Return the syntax for a sine"""
     return __simple_function("SIN", number)
 
-def of_sinh(number):
+def SINH(number):
     """Return the syntax for an hyperbolic sine"""
     return __simple_function("SINH", number)
 
-def of_sqrt(number):
+def SQRT(number):
     """Return the syntax for a square root """
     return __simple_function("SQRT", number)
 
-def of_sqrtpi(number):
+def SQRTPI(number):
     """Return the syntax for a square root * pi """
     return __simple_function("SQRTPI", number)
 
-def of_sum(*number_list):
+def SUM(*number_list):
     """Return the syntax for a sum """
     return __num_list_function("SUM", *number_list)
 
-def of_sumif(cells, criteria, sum_range=None):
+def SUMIF(cells, criteria, sum_range=None):
    """Return the syntax for a sumif """
    if sum_range is None:
       if (type(cells) in (CellReference, RangeReference) and 
@@ -449,18 +446,18 @@ def of_sumif(cells, criteria, sum_range=None):
       else:
          raise TypeError, "Wrong types of arguments"
 
-def of_sumsq(*number_list):
+def SUMSQ(*number_list):
     """Return the syntax for a sum of the squares """
     return __num_list_function("SUMSQ", *number_list)
 
-def of_tan(number):
+def TAN(number):
     """Return the syntax for a tangent """
     return __simple_function("TAN", number)
  
-def of_tanh(number):
+def TANH(number):
     """Return the syntax for an hyperbolic tangent """
     return __simple_function("TANH", number)
 
-def of_trunc(number, count):
+def TRUNC(number, count):
     """Return the syntax for a truncate """
     return __simple_function2("TRUNC", number, count)
