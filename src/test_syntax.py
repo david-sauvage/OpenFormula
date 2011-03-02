@@ -17,10 +17,10 @@ class TestOpenFormulaSyntax(unittest.TestCase):
         self.assertEqual(Formula("SUM([.A1:.A2])", forcerecalc=True), expected)
 
     def test_of_number(self):
-        self.assertEqual(number(5).str, "5")
-        self.assertEqual(number(5.5).str, "5.5")
+        self.assertEqual(str(number(5)), "5")
+        self.assertEqual(str(number(5.5)), "5.5")
         d = Decimal("5.5e55")
-        self.assertEqual(number(d).str, "5.5E+55")
+        self.assertEqual(str(number(d)), "5.5E+55")
         self.assertRaises(TypeError, number, "a")
 
     def test_of_string(self):
@@ -41,22 +41,22 @@ class TestOpenFormulaSyntax(unittest.TestCase):
 
     def test_of_reference(self):
         expected="['src'# address]"
-	self.assertEqual(reference(Cell("address"), source("src")).str,
+	self.assertEqual(str(reference(Cell("address"), source("src"))),
                                                                       expected)
-	self.assertEqual(reference(Range("address"), source("src")).str,
+	self.assertEqual(str(reference(Range("address"), source("src"))),
                                                                       expected)
         self.assertRaises(TypeError, reference, Number("address"))
 
     def test_of_column(self):
-        self.assertEqual(column("AB").str, "AB")
-        self.assertEqual(column("AB", True).str, "$AB")
+        self.assertEqual(str(column("AB")), "AB")
+        self.assertEqual(str(column("AB", True)), "$AB")
         self.assertRaises(ValueError, column, "A1B")
         self.assertRaises(TypeError, column, 8)
 
     def test_of_row(self):
-        self.assertEqual(row(55).str, "55")
-        self.assertEqual(row("55", True).str, "$55")
-        self.assertEqual(row(55, True).str, "$55")
+        self.assertEqual(str(row(55)), "55")
+        self.assertEqual(str(row("55", True)), "$55")
+        self.assertEqual(str(row(55, True)), "$55")
         self.assertRaises(ValueError, row, "5A5")
         self.assertRaises(TypeError, row, 8.5)
 
@@ -66,23 +66,23 @@ class TestOpenFormulaSyntax(unittest.TestCase):
 
     def test_of_range_address(self):
         expected=".AA11"
-	self.assertEqual(range_address(column("AA"), row(11)).str, expected)
+	self.assertEqual(str(range_address(column("AA"), row(11))), expected)
 
         expected="sheet.AA11"
-	self.assertEqual(range_address("sheet", column("AA"),
-                                                     row(11)).str, expected)
+	self.assertEqual(str(range_address("sheet", column("AA"),
+                                                     row(11))), expected)
 
         expected=".AA11:.BB22"
-	self.assertEqual(range_address(column("AA"), row(11),
-                                    column("BB"), row(22)).str, expected)
+	self.assertEqual(str(range_address(column("AA"), row(11),
+                                    column("BB"), row(22))), expected)
 
         expected="sheet.AA11:sheet2.BB22"
-	self.assertEqual(range_address("sheet", column("AA"),
-               row(11),"sheet2", column("BB"), row(22)).str, expected)
+	self.assertEqual(str(range_address("sheet", column("AA"),
+               row(11),"sheet2", column("BB"), row(22))), expected)
         
         expected=".AA11:.BB22"
-	self.assertEqual(range_address(column("AA"), row(11),
-                                    column("BB"), row(22)).str, expected)
+	self.assertEqual(str(range_address(column("AA"), row(11),
+                                    column("BB"), row(22))), expected)
 
         self.assertRaises(TypeError, range_address,"A", 1)
 

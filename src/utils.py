@@ -18,7 +18,7 @@ def __num_list_function(function, *number_list):
    if type(function) is str and is_num_range_list(number_list):
       parameter = ""
       for i in number_list:
-         parameter = parameter+i.str+" ; "
+         parameter = parameter+str(i)+" ; "
       return function.upper()+"("+parameter[0:-3]+")"
    else:
       raise TypeError, "Arguments must be Numbers or CellReferences"

@@ -40,39 +40,39 @@ class TestOpenFormulaBasicsOp(unittest.TestCase):
         self.assertRaises(TypeError, concatenate, 2)
 
     def test_of_equal(self):
-        self.assertEqual(eq("abc").str, "abc")
-        self.assertEqual(eq("abc","def","ghi").str,"abc=def=ghi")
-        self.assertEqual(eq(Number("2"), Number("3")).str,"2=3")
+        self.assertEqual(str(eq("abc")), "abc")
+        self.assertEqual(str(eq("abc","def","ghi")),"abc=def=ghi")
+        self.assertEqual(str(eq(Number("2"), Number("3"))),"2=3")
         self.assertRaises(TypeError, eq, 2) 
 
     def test_of_different(self):
-        self.assertEqual(ne("abc").str, "abc")
-        self.assertEqual(ne("abc","def","ghi").str,"abc<>def<>ghi")
-        self.assertEqual(ne(Number("2"), Number("3")).str,"2<>3")
+        self.assertEqual(str(ne("abc")), "abc")
+        self.assertEqual(str(ne("abc","def","ghi")),"abc<>def<>ghi")
+        self.assertEqual(str(ne(Number("2"), Number("3"))),"2<>3")
         self.assertRaises(TypeError, ne, 2) 
 
     def test_of_upper(self):
-        self.assertEqual(gt("abc").str, "abc")
-        self.assertEqual(gt("abc","def","ghi").str,"abc>def>ghi")
-        self.assertEqual(gt(Number("2"), Number("3")).str,"2>3")
+        self.assertEqual(str(gt("abc")), "abc")
+        self.assertEqual(str(gt("abc","def","ghi")),"abc>def>ghi")
+        self.assertEqual(str(gt(Number("2"), Number("3"))),"2>3")
         self.assertRaises(TypeError, gt, 2) 
 
     def test_of_lower(self):
-        self.assertEqual(lt("abc").str, "abc")
-        self.assertEqual(lt("abc","def","ghi").str,"abc<def<ghi")
-        self.assertEqual(lt(Number("2"), Number("3")).str,"2<3")
+        self.assertEqual(str(lt("abc")), "abc")
+        self.assertEqual(str(lt("abc","def","ghi")),"abc<def<ghi")
+        self.assertEqual(str(lt(Number("2"), Number("3"))),"2<3")
         self.assertRaises(TypeError, lt, 2) 
 
     def test_of_upper_equal(self):
-        self.assertEqual(ge("abc").str, "abc")
-        self.assertEqual(ge("abc","def","ghi").str,"abc>=def>=ghi")
-        self.assertEqual(ge(Number("2"), Number("3")).str,"2>=3")
+        self.assertEqual(str(ge("abc")), "abc")
+        self.assertEqual(str(ge("abc","def","ghi")),"abc>=def>=ghi")
+        self.assertEqual(str(ge(Number("2"), Number("3"))),"2>=3")
         self.assertRaises(TypeError, ge, 2) 
 
     def test_of_lower_equal(self):
-        self.assertEqual(le("abc").str, "abc")
-        self.assertEqual(le("abc","def","ghi").str,"abc<=def<=ghi")
-        self.assertEqual(le(Number("2"), Number("3")).str,"2<=3")
+        self.assertEqual(str(le("abc")), "abc")
+        self.assertEqual(str(le("abc","def","ghi")),"abc<=def<=ghi")
+        self.assertEqual(str(le(Number("2"), Number("3"))),"2<=3")
         self.assertRaises(TypeError, le, 2) 
 
 if __name__ == '__main__':

@@ -43,7 +43,7 @@ def FALSE():
 def NOT(expression):
     """Return the syntax for a "not" expression  """
     if type(expression) is LogicalExpression:
-        return LogicalExpression("NOT("+expression.str+")")
+        return LogicalExpression("NOT("+str(expression)+")")
     else:
         raise TypeError, "Argument must be a LogicalExpression"
 
@@ -59,15 +59,15 @@ def IF(test, then, otherwise):
     if type(test) is LogicalExpression and type(then) in (Number,
        CellReference, str) and type(otherwise) in (Number, CellReference, str):
 
-        expression = "IF("+test.str+";"
+        expression = "IF("+str(test)+";"
         if type(then)==str:
             expression = expression+then+";"
         else:
-            expression = expression+then.str+";"
+            expression = expression+str(then)+";"
         if type(otherwise)==str:
             expression = expression+otherwise+")"
         else:
-            expression = expression+otherwise.str+")"
+            expression = expression+str(otherwise)+")"
 
         return expression
     else:

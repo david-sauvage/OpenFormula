@@ -50,7 +50,7 @@ def parameter_list(*parameters):
 
 def reference(range_address, source=None):
     """Return the syntax for a reference"""
-    reference = range_address.str
+    reference = str(range_address)
     if source is not None:
         reference = source + " " +  reference
     reference = "[" + reference + "]"
