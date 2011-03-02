@@ -1,9 +1,31 @@
 """Module with some useful functions used by Open Formula"""
 
-#Import from Open Formula
+# Import from Open Formula
 from objects import Number, CellReference, RangeReference, LogicalExpression
 
-#Functions that verify types
+#
+# Internal helpers
+#
+def __num_list_function(function, *number_list):
+   """
+   Generic implementation the syntax for simple function with many arguments 
+   like FUNCTION(num1, num2, num3, etc...)
+
+   Arguments :
+       function -- str
+       number -- Number or CellReference or RangeReference
+   """
+   if type(function) is str and is_num_range_list(number_list):
+      parameter = ""
+      for i in number_list:
+         parameter = parameter+i.str+" ; "
+      return function.upper()+"("+parameter[0:-3]+")"
+   else:
+      raise TypeError, "Arguments must be Numbers or CellReferences"
+
+#
+# Functions that verify types
+#
 def is_number_list(arg):
     """
     Verify if all classes present in the list are Numbers or CellReferences

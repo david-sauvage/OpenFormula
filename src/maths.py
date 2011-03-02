@@ -5,7 +5,7 @@ except for convert, euroconvert and subtotal
 
 #Import from Open Formula
 from objects import Number, CellReference, RangeReference, LogicalExpression
-from utils import is_num_range_list
+from utils import __num_list_function
 from syntax import parameter_list
 
 #
@@ -41,23 +41,6 @@ def __simple_function2(function, number1, number2):
       return function.upper()+"("+parameter_list(number1.str,
                                                                 number2.str)+")"
 
-   else:
-      raise TypeError, "Arguments must be Numbers or CellReferences"
-
-def __num_list_function(function, *number_list):
-   """
-   Generic implementation the syntax for simple function with many arguments 
-   like FUNCTION(num1, num2, num3, etc...)
-
-   Arguments :
-       function -- str
-       number -- Number or CellReference or RangeReference
-   """
-   if type(function) is str and is_num_range_list(number_list):
-      parameter = ""
-      for i in number_list:
-         parameter = parameter+i.str+" ; "
-      return function.upper()+"("+parameter[0:-3]+")"
    else:
       raise TypeError, "Arguments must be Numbers or CellReferences"
 
