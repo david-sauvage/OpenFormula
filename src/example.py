@@ -4,7 +4,7 @@ from lpod.table import odf_create_table, odf_create_cell
 from random import randrange
 
 #import openformula
-from syntax import of_formula, of_intro, of_reference, of_range_address, of_column, of_row
+from syntax import Formula, reference, range_address, column, row
 from stats import AVERAGE, MIN, MAX
 
 #We create a spreadsheet just for the example
@@ -27,19 +27,19 @@ table.set_value((1,0), "Maximum")
 table.set_value((2,0), "Minimum")
 
 #average
-formula=of_formula(of_intro(), AVERAGE(of_reference(of_range_address('data', of_column('A'), of_row(1), of_column('E'), of_row(5)))))
+formula=Formula(AVERAGE(reference(range_address('data', column('A'), row(1), column('E'), row(5)))))
 cell = odf_create_cell()
 cell.set_formula(formula)
 table.set_cell((0,1), cell)
 
 #maximum
-formula=of_formula(of_intro(), MAX(of_reference(of_range_address('data', of_column('A'), of_row(1), of_column('E'), of_row(5)))))
+formula=Formula(MAX(reference(range_address('data', column('A'), row(1), column('E'), row(5)))))
 cell = odf_create_cell()
 cell.set_formula(formula)
 table.set_cell((1,1), cell)
 
 #minimum
-formula=of_formula(of_intro(), MIN(of_reference(of_range_address('data', of_column('A'), of_row(1), of_column('E'), of_row(5)))))
+formula=Formula(MIN(reference(range_address('data', column('A'), row(1), column('E'), row(5)))))
 cell = odf_create_cell()
 cell.set_formula(formula)
 table.set_cell((2,1), cell)

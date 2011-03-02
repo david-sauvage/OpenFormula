@@ -6,7 +6,7 @@ except for convert, euroconvert and subtotal
 #Import from Open Formula
 from objects import Number, CellReference, RangeReference, LogicalExpression
 from utils import is_num_range_list
-from syntax import of_parameter_list
+from syntax import parameter_list
 
 #
 #Private API
@@ -38,7 +38,7 @@ def __simple_function2(function, number1, number2):
    """
    if (type(function) is str and type(number1) in (Number, CellReference) and 
                                       type(number2) in (Number, CellReference)):
-      return function.upper()+"("+of_parameter_list(number1.str,
+      return function.upper()+"("+parameter_list(number1.str,
                                                                 number2.str)+")"
 
    else:
@@ -72,14 +72,14 @@ def __round(function, number, count):
    """
    if count is None:
       if type(function) is str and type(number) in (Number, CellReference):
-         return function.upper()+"("+of_parameter_list(number.str)+")"
+         return function.upper()+"("+parameter_list(number.str)+")"
       else:
          raise TypeError, "Argument must be a Number or a CellReference"
    else:
       if (type(function) is str and type(number) in (Number, CellReference) and 
                                         type(count) in (Number, CellReference)):
 
-	 return function.upper()+"("+of_parameter_list(number.str,
+	 return function.upper()+"("+parameter_list(number.str,
                                                                  count.str)+")"
 
       else:
@@ -99,7 +99,7 @@ def __floor_ceil(function, number, significance, mode):
       if (type(function) is str and type(number) in (Number, CellReference) and 
                                 type(significance) in (Number, CellReference)):
 
-	 return function.upper()+"("+of_parameter_list(number.str,
+	 return function.upper()+"("+parameter_list(number.str,
                                                            significance.str)+")"
 
       else:
@@ -109,7 +109,7 @@ def __floor_ceil(function, number, significance, mode):
 			     type(significance) in (Number, CellReference) and 
                                         type(mode) in (Number, CellReference)):
 
-	 return function.upper()+"("+of_parameter_list(number.str,
+	 return function.upper()+"("+parameter_list(number.str,
                                                  significance.str, mode.str)+")"
 
       else:
@@ -395,7 +395,7 @@ def SERIESSUM(x, n, m, coeff):
        type(n) in (Number, CellReference) and 
        type(m) in (Number, CellReference) and 
        type(coeff) in (Number, CellReference, RangeReference)):
-	parameters = of_parameter_list(x.str, n.str, m.str, coeff.str)
+	parameters = parameter_list(x.str, n.str, m.str, coeff.str)
 	return "SERIESSUM(" + parameters + ")"
     raise TypeError, "Wrong type of arguments"
 
