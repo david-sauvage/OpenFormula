@@ -6,6 +6,7 @@ from of_syntax import of_formula, of_intro, of_number, of_string
 from of_syntax import of_parameter_list, of_reference, of_column, of_row
 from of_syntax import of_range_address, of_reference_list, of_array
 from of_syntax import of_function_name, of_source, of_matrix_row
+from of_syntax import of_range_address2
 class TestOpenFormulaSyntax(unittest.TestCase):
     
 #Syntax test
@@ -95,6 +96,20 @@ class TestOpenFormulaSyntax(unittest.TestCase):
                                     of_column("BB"), of_row(22)).str, expected)
 
         self.assertRaises(TypeError, of_range_address,"A", 1)
+
+    def test_of_range_address2(self):
+        expected="[.AA11]"
+        self.assertEqual(str(of_range_address2("AA11")), expected)
+        expected="[sheet.AA11]"
+        self.assertEqual(str(of_range_address2("sheet.AA11")), expected)
+        expected="[.AA11:.BB22]"
+        self.assertEqual(str(of_range_address2("AA11:BB22")), expected)
+        expected="[sheet.AA11:.BB22]"
+        self.assertEqual(str(of_range_address2("sheet.AA11:BB22")), expected)
+        expected="[sheet.A1:sheet.B2]"
+        self.assertEqual(str(of_range_address2("sheet.A1:sheet.B2")), expected)
+        self.assertRaises(ValueError, of_range_address2, "A1:A2:B2")
+        self.assertRaises(TypeError, of_range_address2, 1)
 
     def test_of_reference_list(self):
 	self.assertEqual(of_reference_list("abc", "def", "ghi"), 

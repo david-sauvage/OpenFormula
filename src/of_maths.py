@@ -5,8 +5,8 @@ except for convert, euroconvert and subtotal
 
 #Import from Open Formula
 from of_class import Number, CellReference, RangeReference, LogicalExpression
-from of_utils import is_num_range_list
-from of_syntax import of_parameter_list
+from of_utils import is_num_range_list, is_str_or_number_list
+from of_syntax import of_parameter_list, of_range_address2
 
 #
 #Private API
@@ -19,12 +19,19 @@ def __simple_function(function, number):
    
    Arguments :
        function -- str
-       number -- Number or CellReference
+       number -- Number or str
    """
-   if type(function) is str and isinstance(number, (Number, CellReference)):
-      return function.upper()+"("+number.str+")"
+   if type(function) is str and isinstance(number, (Number, str)):
+      if isinstance(number, Number):
+         return function.upper()+"("+str(number)+")"
+      else:
+         number = of_range_address2(number)
+         if isinstance(number, CellReference):
+            return function.upper()+"("+str(number)+")"
+         else:
+            raise TypeError, "This function can be call for only a number"
    else:
-      raise TypeError, "Argument must be a Number or a CellReference"
+      raise TypeError, "Argument must be a Number or a str"
 
 
 def __simple_function2(function, number1, number2):
@@ -34,15 +41,20 @@ def __simple_function2(function, number1, number2):
    
    Arguments :
        function -- str
-       number -- Number or CellReference
+       number -- Number or str
    """
+
+   if isinstance(number1, str):
+      number1 = of_range_address2(number1)
+   if isinstance(number2, str):
+      number2 = of_range_address2(number2)
+
    if (type(function) is str and type(number1) in (Number, CellReference) and 
                                       type(number2) in (Number, CellReference)):
       return function.upper()+"("+of_parameter_list(number1.str,
                                                                 number2.str)+")"
-
    else:
-      raise TypeError, "Arguments must be Numbers or CellReferences"
+      raise TypeError, "Arguments must be Numbers or str"
 
 def __num_list_function(function, *number_list):
    """
@@ -51,12 +63,16 @@ def __num_list_function(function, *number_list):
 
    Arguments :
        function -- str
-       number -- Number or CellReference or RangeReference
+       number -- Number or str
    """
-   if type(function) is str and is_num_range_list(number_list):
+
+   if type(function) is str and is_str_or_number_list(number_list):
       parameter = ""
       for i in number_list:
-         parameter = parameter+i.str+" ; "
+         if isinstance(i, Number):
+            parameter = parameter+i.str+" ; "
+         else:
+            parameter = parameter+str(of_range_address2(i))+" ; "
       return function.upper()+"("+parameter[0:-3]+")"
    else:
       raise TypeError, "Arguments must be Numbers or CellReferences"
@@ -67,12 +83,17 @@ def __round(function, number, count):
 
    Arguments :
        function -- str
-       number -- Number or CellReference
-       count -- None or Number or CellReference
+       number -- Number or str
+       count -- None or Number or str
    """
+   if isinstance(number, str):
+      number = of_range_address2(number)
+   if isinstance(count, str):
+      count = of_range_address2(count)
+
    if count is None:
       if type(function) is str and type(number) in (Number, CellReference):
-         return function.upper()+"("+of_parameter_list(number.str)+")"
+         return function.upper()+"("+str(number)+")"
       else:
          raise TypeError, "Argument must be a Number or a CellReference"
    else:
@@ -95,6 +116,15 @@ def __floor_ceil(function, number, significance, mode):
        significance -- Number or CellRefenrece
        mode -- None or Number or CellReference
    """
+
+   if isinstance(number, str):
+      number = of_range_address2(number)
+   if isinstance(significance, str):
+      significance = of_range_address2(significance)
+   if isinstance(mode, str):
+      mode = of_range_address2(mode) 
+
+
    if mode is None:
       if (type(function) is str and type(number) in (Number, CellReference) and 
                                 type(significance) in (Number, CellReference)):
@@ -198,6 +228,7 @@ def of_coth(number):
 
 def of_countblank(cell_range):
     """Return the syntax for a countblank """
+    cell_range = of_range_address2(cell_range)
     if type(cell_range) in (CellReference, RangeReference):
             return "COUNTBLANK("+cell_range.str+")"
     else:
@@ -205,8 +236,11 @@ def of_countblank(cell_range):
 
 def of_countif(cells, criteria):
    """Return the syntax for a countif """
+   cells =  of_range_address2(cells)
+   if isinstance(criteria, str):
+      criteria = of_range_address2(criteria)
    if (type(cells) in (CellReference, RangeReference) and type(criteria) in 
-               (Number, CellReference, RangeReference, LogicalExpression, str)):
+               (Number, CellReference, RangeReference, LogicalExpression)):
 
       return "COUNTIF("+cells.str+";"+criteria.str+")"
    else:
@@ -391,6 +425,15 @@ def of_seriessum(x, n, m, coeff):
     Return the syntax for a seriessum
     Gives the sum of a power series
     """
+    if isinstance(x, str):
+       x = of_range_address2(x)
+    if isinstance(n, str):
+       n = of_range_address2(n)
+    if isinstance(m, str):
+       m = of_range_address2(m)
+    if isinstance(coeff, str):
+       coeff = of_range_address2(coeff)
+
     if (type(x) in (Number, CellReference) and  
        type(n) in (Number, CellReference) and 
        type(m) in (Number, CellReference) and 
@@ -431,10 +474,18 @@ def of_sum(*number_list):
 
 def of_sumif(cells, criteria, sum_range=None):
    """Return the syntax for a sumif """
+
+   if isinstance(cells, str):
+       cells = of_range_address2(cells) 
+   if isinstance(criteria, str):
+      criteria = of_range_address2(criteria)
+   if isinstance(sum_range, str):
+      sum_range = of_range_address2(sum_range)
+       
    if sum_range is None:
       if (type(cells) in (CellReference, RangeReference) and 
 	 type(criteria) in (Number, CellReference, RangeReference,
-                                                       LogicalExpression, str)):
+                                                       LogicalExpression)):
 
          return "SUMIF("+cells.str+";"+criteria.str+")"
       else:

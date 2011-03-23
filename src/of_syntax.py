@@ -12,6 +12,42 @@ from of_class import Column, Row
 
 function_name_pattern = compile("^[A-Za-z_.1-9]*$")
 
+#
+#Private API
+#
+
+def __get_an_address(arg):
+    """
+    arg - str
+    Verify the format of the cell
+    and add a '.' when it is necessary
+    """
+    if arg.count('.') == 1: #if it's like "sheet.A1"
+        split = arg.split('.')
+        return split[0]+'.'+__verify_cell(split[1])
+    elif arg.count('.') == 0:  #if it's just like "A1"
+        return '.'+__verify_cell(arg)
+    else:
+        raise ValueError, "Not a valid range address"
+
+def __verify_cell(arg):
+    """
+    arg - str
+    Verify that arg correspond to a cell
+    """
+    col = ''
+    for c in arg:
+        if c.isalpha():
+            col += c
+        else:
+            break
+    row = int(arg[len(col):])
+    return str(of_column(col))+str(of_row(row))
+
+#
+#Public API
+#
+
 def of_formula(intro, expression):
     """
     Return the syntax for a formula
@@ -154,6 +190,24 @@ def of_range_address(*args):
 
     raise ValueError, "Incorrect number of arguments"
 
+def of_range_address2(arg):
+    """
+    Return the syntax for a range address
+    arg - string like 'A1', 'A1:B2', 'Sheet.A1:B2 etc...
+    """
+    
+    if type(arg) is str:
+        if arg.count(':') == 1: #if it's a table
+            split = arg.split(':')
+            part1 = __get_an_address(split[0])
+            part2 = __get_an_address(split[1])
+            return RangeReference('['+part1+':'+part2+"]")
+        elif arg.count(':') == 0: #if it's a cell
+            return CellReference("["+__get_an_address(arg)+"]")
+        else:
+            raise ValueError, "Not a valid range address"
+    else:
+        raise TypeError, "Not a string"
 
 def of_reference_list(*references):
     """Return the syntax for a reference list"""

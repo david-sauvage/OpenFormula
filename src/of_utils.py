@@ -32,13 +32,23 @@ def is_str_num_list(arg):
             return False
     return True
 
+def is_str_or_number_list(arg):
+    """
+    Verify if all classes present in the list are 
+    Strings or Numbers
+    """
+    for i in arg:
+        if not isinstance(i, (str, Number)):
+            return False
+    return True
+
 def is_num_range_list(arg):
     """
     Verify if all classes present in the list are 
     Numbers, CellReferences or RangeReferences
     """
     for i in arg:
-        if not isinstance(i, (Number, CellReference, RangeReference)):
+        if not isinstance(i, (Number, CellReference, RangeReference)): 
             return False
     return True
 
